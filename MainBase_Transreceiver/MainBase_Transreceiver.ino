@@ -9,17 +9,23 @@
 
 // Variables
 
+const byte addresses [] [6] = {"00000", "00001"};
+
 boolean startup_base = 1;
 boolean test_send = 1;
 boolean test_receive = 0;
-RF24 radio(7,8); // CNS, CE Pins
-const byte addresses [] [6] = {"00000", "00001"};
+
+int sensor_data = {0,0};
+int Index_position = 3; // Initial Value
+int Ring_position = 3; // Initial Value
+
+RF24 radio(7,8); // CNS, CE Pins from transreceiver
 
 void setup() {
   radio.begin();
   radio.openWritingPipe(addresses[1]); // 00000
   radio.openReadingPipe(1, addresses[0]); //00001
-  radio.setPALevel(RF24_PA_MIN);
+  radio.setPALevel(RF24_PA_MIN);  
 }
 
 void loop() {
@@ -53,7 +59,22 @@ void loop() {
 
   if (startup_base != 1) {
     radio.startListening();
-    
+    get_SensorData():
   }
 
+}
+
+          // get_SensorData Function //
+
+void get_SensorData() {
+
+  if (radio.available()) {
+    radio.read(&sensor_data, sizeof(sensor_data));
+
+    Index_position = sensor_data[0];
+    Ring_position = sensor_data[1];
+    
+    Serial.print("Data Received: " + sensor_data[0]);
+    Serial.println(", " + sensor_data[1]);
+  }
 }
