@@ -24,6 +24,7 @@ LiquidCrystal lcd(20, 21, 22, 23, 24, 27); // Creates an LC object. Parameters: 
 RF24 radio(11,10); // Connected to CNS, CE Pins from transreceiver
 
 void setup() {
+  Serial.begin();
   lcd.begin(16,2);
   radio.begin();
   radio.openWritingPipe(addresses[1]); // 00000

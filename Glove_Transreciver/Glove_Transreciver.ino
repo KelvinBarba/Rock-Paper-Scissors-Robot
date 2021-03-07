@@ -26,6 +26,7 @@ int Ring_position;
 RF24 radio(11,10); // Connected to CE, CSN Pins from transreceiver
 
 void setup() {
+  Serial.begin();
   radio.begin();
   radio.openWritingPipe(addresses[0]); // 00001
   radio.openReadingPipe(1, addresses[1]); // 00000
