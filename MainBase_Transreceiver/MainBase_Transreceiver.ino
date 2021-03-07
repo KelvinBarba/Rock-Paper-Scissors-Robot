@@ -2,6 +2,7 @@
 #include <nRF24L01.h>
 #include <RF24_config.h>
 #include <RF24.h>
+#include <LiquidCrystal.h>
 
 // Library For nRF24: https://github.com/nRF24/RF24/
 
@@ -18,10 +19,12 @@ boolean test_receive = 0;
 int sensor_data = {0,0};
 int Index_position = 3; // Initial Value
 int Ring_position = 3; // Initial Value
+LiquidCrystal lcd(20, 21, 22, 23, 24, 27); // Creates an LC object. Parameters: (rs, enable, d4, d5, d6, d7) 
 
 RF24 radio(11,10); // Connected to CNS, CE Pins from transreceiver
 
 void setup() {
+  lcd.begin(16,2);
   radio.begin();
   radio.openWritingPipe(addresses[1]); // 00000
   radio.openReadingPipe(1, addresses[0]); //00001
