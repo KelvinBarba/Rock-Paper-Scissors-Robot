@@ -12,7 +12,7 @@
 
 // Variables
 
-const byte address [][6] = {"00000". "00001"};
+const byte addresses [][6] = {"00000", "00001"};
 
 boolean startup_glove = 1;
 boolean test_receive = 0;
@@ -26,7 +26,7 @@ int Ring_position;
 RF24 radio(11,10); // Connected to CE, CSN Pins from transreceiver
 
 void setup() {
-  Serial.begin();
+  Serial.begin(9600);
   radio.begin();
   radio.openWritingPipe(addresses[0]); // 00001
   radio.openReadingPipe(1, addresses[1]); // 00000
@@ -71,7 +71,7 @@ void loop() {
     sensor_data[0] = Index_position;
     sensor_data[1] = Ring_position;
 
-    send_SesnorData();
+    send_SensorData();
   }
 }
 
