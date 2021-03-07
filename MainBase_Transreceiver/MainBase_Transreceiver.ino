@@ -77,6 +77,9 @@ void get_SensorData() {
     Index_position = sensor_data[0];
     Ring_position = sensor_data[1];
     
+    lcd.setCursor(0, 1);
+    lcd.print("Ring Data: " + sensor_data[1]);
+    
     Serial.print("Data Received: " + sensor_data[0]);
     Serial.println(", " + sensor_data[1]);
   }
