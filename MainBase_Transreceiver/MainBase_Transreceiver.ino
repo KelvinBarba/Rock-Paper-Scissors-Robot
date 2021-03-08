@@ -38,6 +38,7 @@ void loop() {
 // Confirm Connection between Base and Glove
 
   if (startup_base) {
+    Serial.println("Test 1");
     radio.stopListening();
     radio.write(&test_send, sizeof(test_send));
 
@@ -46,6 +47,7 @@ void loop() {
     radio.startListening();
     
     while(radio.available()) {
+      Serial.println("Test 2");
       radio.read(&test_receive, sizeof(test_receive));
 
       if (test_receive) {
@@ -62,6 +64,7 @@ void loop() {
 // Base will receive input from glove
 
   if (startup_base != 1) {
+    Serial.println("Test 3");
     radio.startListening();
     get_SensorData();
   }
@@ -71,8 +74,9 @@ void loop() {
           // get_SensorData Function //
 
 void get_SensorData() {
-
+Serial.println("Test 4");
   if (radio.available()) {
+    Serial.println("Test 5");
     radio.read(&sensor_data, sizeof(sensor_data));
 
     Index_position = sensor_data[0];
