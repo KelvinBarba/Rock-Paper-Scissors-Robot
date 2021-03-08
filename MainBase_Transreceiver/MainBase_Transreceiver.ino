@@ -21,7 +21,7 @@ int Index_position = 3; // Initial Value
 int Ring_position = 3; // Initial Value
 //LiquidCrystal lcd(20, 21, 22, 23, 24, 27); // Creates an LC object. Parameters: (rs, enable, d4, d5, d6, d7) 
 
-RF24 radio(10,9); // Connected to CNS, CE Pins from transreceiver
+RF24 radio(9,10); // Connected to CNS, CE Pins from transreceiver
 
 void setup() {
   Serial.begin(9600);
