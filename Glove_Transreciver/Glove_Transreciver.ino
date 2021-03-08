@@ -23,7 +23,7 @@ int Index_position;
 int RingflexValue;
 int Ring_position;
 
-RF24 radio(11,10); // Connected to CE, CSN Pins from transreceiver
+RF24 radio(9,10); // Connected to CE, CSN Pins from transreceiver
 
 void setup() {
   Serial.begin(9600);
