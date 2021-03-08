@@ -85,7 +85,7 @@ Serial.println("Test 4");
     //lcd.setCursor(0, 1);
     //lcd.print("Ring Data: " + sensor_data[1]);
     
-    Serial.print("Data Received: " + sensor_data[0]);
-    Serial.println(", " + sensor_data[1]);
+    Serial.print("Data Received: Index: " + sensor_data[0]);
+    Serial.println(",Ring:  " + sensor_data[1]);
   }
 }
