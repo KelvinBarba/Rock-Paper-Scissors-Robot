@@ -72,11 +72,11 @@ void getData() {
 
 int find_player_response(int pointer_position, int pinky_position) 
 { 
-  if (pointer_position <= 700 && pinky_position <= 700) // Paper
+  if (pointer_position <= 675 && pinky_position <= 675) // Paper
     return 1;
-  else if (pointer_position > 700 && pinky_position <= 700 || pointer_position <= 700 && pinky_position > 700  ) // Scissors
+  else if (pointer_position > 675 && pinky_position <= 675 || pointer_position <= 675 && pinky_position > 675  ) // Scissors
     return 2;
-  else if (pointer_position > 700 && pinky_position > 700) // Rock
+  else if (pointer_position > 675 && pinky_position > 675) // Rock
     return 0;
   else
     return 3;
@@ -94,10 +94,11 @@ void start_button ()
 	lcd.clear();
     lcd.println(i);
   }
-  player_signal = find_player_response(pointer_position, pinky_position);
+  getData();
   lcd.clear();
   lcd.println("Go");
   delay(1000);
+  player_signal = find_player_response(pointer_position, pinky_position);
   RPS_func(player_signal);
 }
 
